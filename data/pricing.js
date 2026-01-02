@@ -1,0 +1,45 @@
+export const pricingPlans = [
+    {
+        name: 'Starter',
+        price: '0',
+        period: '/month',
+        features: [
+            '1 Website',
+            'Basic Templates',
+            'Community Support',
+            'WebBuilder Subdomain',
+            'Basic Analytics',
+        ],
+        mostPopular: false,
+    },
+    {
+        name: 'Pro',
+        price: '29',
+        period: '/month',
+        features: [
+            'Unlimited Websites',
+            'Premium Templates',
+            'Priority Support',
+            'Custom Domain',
+            'Advanced Analytics',
+            'Remove Branding',
+            'Export Code',
+        ],
+        mostPopular: true,
+    },
+    {
+        name: 'Enterprise',
+        price: '99',
+        period: '/month',
+        features: [
+            'Everything in Pro',
+            'Team Collaboration',
+            'White Label',
+            'API Access',
+            'Dedicated Support',
+            'Custom Integrations',
+            'SLA Guarantee',
+        ],
+        mostPopular: false,
+    },
+];
