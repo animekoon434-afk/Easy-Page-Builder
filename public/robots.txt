@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Block authenticated routes
+Disallow: /create
+Disallow: /structure
+Disallow: /dashboard
+Disallow: /api/
+
+# Allow search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://easy-page-builder-seven.vercel.app/sitemap.xml

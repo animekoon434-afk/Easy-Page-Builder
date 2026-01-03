@@ -2,6 +2,13 @@ import { NextResponse } from 'next/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { z } from 'zod';
 import prisma from '@/lib/prisma';
+import { logger } from '@/lib/logger';
+
+// Ensure Node.js runtime for Prisma compatibility (not Edge)
+export const runtime = 'nodejs';
+
+// Rate limiting: Maximum projects per user
+const MAX_PROJECTS_PER_USER = 10;
 
 // Zod validation schema
 const createProjectSchema = z.object({
@@ -17,11 +24,12 @@ export async function POST(request) {
     try {
         // Test database connection
         await prisma.$connect();
-        console.log('✅ Database connected successfully');
+        logger.info('db', 'Database connected successfully');
 
         const { userId } = await auth();
 
         if (!userId) {
+            logger.warn('auth', 'Unauthorized access attempt to POST /api/projects');
             return NextResponse.json(
                 { error: 'Unauthorized', code: 'UNAUTHORIZED' },
                 { status: 401 }
@@ -39,6 +47,7 @@ export async function POST(request) {
                 field: e.path.join('.'),
                 message: e.message,
             }));
+            logger.warn('validation', 'Project creation validation failed', { errors, userId });
             return NextResponse.json(
                 { error: 'Validation failed', code: 'VALIDATION_ERROR', errors },
                 { status: 400 }
@@ -77,6 +86,21 @@ export async function POST(request) {
                 );
             }
 
+            // Rate limiting: Check project count
+            const projectCount = await prisma.project.count({
+                where: { userId },
+            });
+
+            if (projectCount >= MAX_PROJECTS_PER_USER) {
+                return NextResponse.json(
+                    {
+                        error: `You've reached the maximum of ${MAX_PROJECTS_PER_USER} projects. Upgrade to Pro for unlimited projects.`,
+                        code: 'RATE_LIMIT_EXCEEDED'
+                    },
+                    { status: 429 }
+                );
+            }
+
             // Create project
             const project = await prisma.project.create({
                 data: {
@@ -90,11 +114,11 @@ export async function POST(request) {
                 },
             });
 
-            console.log('✅ Project created:', project.id);
+            logger.info('api', 'Project created successfully', { projectId: project.id, userId });
             return NextResponse.json({ project }, { status: 201 });
 
         } catch (dbError) {
-            console.error('Database error:', dbError.message);
+            logger.error('db', 'Database error during project creation', { error: dbError.message, userId });
             return NextResponse.json(
                 {
                     error: 'Database error. Please try again.',
@@ -104,7 +128,7 @@ export async function POST(request) {
             );
         }
     } catch (error) {
-        console.error('Error creating project:', error);
+        logger.error('api', 'Internal error during project creation', { error: error.message });
         return NextResponse.json(
             { error: 'Internal server error', code: 'INTERNAL_ERROR' },
             { status: 500 }
@@ -117,6 +141,7 @@ export async function GET() {
         const { userId } = await auth();
 
         if (!userId) {
+            logger.warn('auth', 'Unauthorized access attempt to GET /api/projects');
             return NextResponse.json(
                 { error: 'Unauthorized', code: 'UNAUTHORIZED' },
                 { status: 401 }
@@ -142,7 +167,7 @@ export async function GET() {
 
             return NextResponse.json({ projects }, { status: 200 });
         } catch (dbError) {
-            console.error('Database error:', dbError.message);
+            logger.error('db', 'Database error while fetching projects', { error: dbError.message, userId });
             return NextResponse.json(
                 {
                     error: 'Database not connected',
@@ -152,7 +177,7 @@ export async function GET() {
             );
         }
     } catch (error) {
-        console.error('Error fetching projects:', error);
+        logger.error('api', 'Internal error while fetching projects', { error: error.message });
         return NextResponse.json(
             { error: 'Internal server error', code: 'INTERNAL_ERROR' },
             { status: 500 }

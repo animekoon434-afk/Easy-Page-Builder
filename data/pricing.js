@@ -7,7 +7,7 @@ export const pricingPlans = [
             '1 Website',
             'Basic Templates',
             'Community Support',
-            'WebBuilder Subdomain',
+            'Easy Page Builder Subdomain',
             'Basic Analytics',
         ],
         mostPopular: false,

@@ -1,5 +1,13 @@
 import { SignIn } from "@clerk/nextjs";
 
+export const metadata = {
+    title: "Sign In - Easy Page Builder",
+    robots: {
+        index: false,
+        follow: false,
+    },
+};
+
 export default function SignInPage() {
     return (
         <main className="min-h-screen flex items-center justify-center p-4">

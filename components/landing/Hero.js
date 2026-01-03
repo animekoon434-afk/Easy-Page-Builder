@@ -92,7 +92,7 @@ export default function Hero() {
             </div>
 
             {/* Showcase Image with Tilt Effect */}
-            <TiltImage src="/assets/hero-section-showcase.png" alt="WebBuilder Dashboard" />
+            <TiltImage src="/assets/hero-section-showcase.png" alt="Easy Page Builder Dashboard" />
         </div>
     );
 }

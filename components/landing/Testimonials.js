@@ -47,7 +47,7 @@ export default function Testimonials() {
             <SectionTitle
                 badge="Testimonials"
                 title="Loved by builders worldwide"
-                description="Hear what our users say about us. Join thousands of satisfied creators building with WebBuilder."
+                description="Hear what our users say about us. Join thousands of satisfied creators building with Easy Page Builder."
             />
 
             <Marquee className="max-w-5xl mx-auto mt-11" gradient={true} speed={25} gradientColor="#000">

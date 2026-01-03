@@ -89,10 +89,26 @@ export default function DashboardPage() {
                     </motion.div>
                 </div>
 
-                {/* Loading State */}
+                {/* Loading State - Skeleton Cards */}
                 {loading && (
-                    <div className="flex items-center justify-center py-20">
-                        <Loader2 className="w-8 h-8 text-violet-500 animate-spin" />
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {[1, 2, 3].map((i) => (
+                            <Card key={i} hover={false} className="animate-pulse">
+                                <div className="flex items-start justify-between mb-4">
+                                    <div className="w-12 h-12 rounded-xl bg-white/5" />
+                                </div>
+                                <div className="h-6 w-3/4 bg-white/5 rounded mb-2" />
+                                <div className="h-4 w-1/3 bg-white/5 rounded mb-4" />
+                                <div className="space-y-2 mb-6">
+                                    <div className="h-4 w-1/2 bg-white/5 rounded" />
+                                    <div className="h-4 w-2/3 bg-white/5 rounded" />
+                                    <div className="h-4 w-1/2 bg-white/5 rounded" />
+                                </div>
+                                <div className="pt-4 border-t border-white/10">
+                                    <div className="h-10 w-full bg-white/5 rounded-xl" />
+                                </div>
+                            </Card>
+                        ))}
                     </div>
                 )}
 
@@ -144,7 +160,7 @@ export default function DashboardPage() {
                                 <Card className="h-full group">
                                     {/* Project Header */}
                                     <div className="flex items-start justify-between mb-4">
-                                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 flex items-center justify-center border border-violet-500/20">
+                                        <div className="w-12 h-12 rounded-xl bg-linear-to-br from-violet-500/20 to-indigo-500/20 flex items-center justify-center border border-violet-500/20">
                                             <Folder className="w-6 h-6 text-violet-400" />
                                         </div>
                                     </div>
@@ -181,16 +197,24 @@ export default function DashboardPage() {
 
                                     {/* Actions */}
                                     <div className="pt-4 border-t border-white/10">
-                                        <Button
-                                            variant="secondary"
-                                            size="sm"
-                                            className="w-full group/btn"
-                                            disabled
-                                        >
-                                            Open Project
-                                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                                            <span className="text-xs text-gray-500 ml-2">(Coming Soon)</span>
-                                        </Button>
+                                        <div className="relative group/tooltip">
+                                            <Button
+                                                variant="secondary"
+                                                size="sm"
+                                                className="w-full group/btn cursor-not-allowed"
+                                                disabled
+                                                title="The visual editor is coming in Phase 2. You'll be able to edit your project directly in the browser."
+                                            >
+                                                Open Project
+                                                <ArrowRight className="w-4 h-4" />
+                                                <span className="text-xs text-gray-500 ml-2">(Phase 2)</span>
+                                            </Button>
+                                            {/* Tooltip */}
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-slate-800 text-xs text-gray-300 rounded-lg opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10 shadow-xl z-10">
+                                                Visual editor coming in Phase 2
+                                                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </Card>
                             </motion.div>

@@ -47,9 +47,9 @@ export default function Footer() {
             >
                 <Link href="/" className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-pink-600 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">W</span>
+                        <span className="text-white font-bold text-lg">E</span>
                     </div>
-                    <span className="text-white font-semibold text-lg">WebBuilder</span>
+                    <span className="text-white font-semibold text-lg">Easy Page Builder</span>
                 </Link>
 
                 {footerData.map((section, index) => (
@@ -90,7 +90,7 @@ export default function Footer() {
                         <YoutubeIcon className="w-6 h-6" />
                     </a>
                 </div>
-                <p className="mt-3 text-center">© {new Date().getFullYear()} WebBuilder. All rights reserved.</p>
+                <p className="mt-3 text-center">© {new Date().getFullYear()} Easy Page Builder. All rights reserved.</p>
             </motion.div>
         </footer>
     );

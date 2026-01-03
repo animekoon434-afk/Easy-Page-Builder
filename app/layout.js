@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "WebBuilder - Build Websites Your Way",
+  title: "Easy Page Builder - Build Websites Your Way",
   description: "Create stunning websites with Code, Drag & Drop, or AI. Fully editable and exportable.",
   keywords: ["website builder", "web development", "nextjs", "react", "ai"],
 };

@@ -1,4 +1,4 @@
-# 🚀 WebBuilder - No-Code Website Builder Platform
+# 🚀 Easy Page Builder - No-Code Website Builder Platform
 
 <div align="center">
 
@@ -18,7 +18,7 @@
 
 ## 📋 Project Overview
 
-WebBuilder is a no-code website building platform that allows users to create professional websites by selecting their preferred tech stack and customizing pre-built templates. Built with Next.js 16 (App Router), Clerk Authentication, Prisma ORM, and Supabase PostgreSQL.
+Easy Page Builder is a no-code website building platform that allows users to create professional websites by selecting their preferred tech stack and customizing pre-built templates. Built with Next.js 16 (App Router), Clerk Authentication, Prisma ORM, and Supabase PostgreSQL.
 
 ---
 
@@ -146,16 +146,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## ⚙️ Environment Variables
 
-### `.env`
-
-```env
-# Prisma Database URL (Supabase PostgreSQL)
-# IMPORTANT: URL-encode special characters in password
-# * → %2A, ! → %21, @ → %40, # → %23, $ → %24
-DATABASE_URL="postgresql://user:password@host:6543/postgres?pgbouncer=true"
-```
-
-### `.env.local`
+### `.env.local` (Local Development)
 
 ```env
 # Clerk Authentication
@@ -168,9 +159,13 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/create
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/create
 
-# Database URL (same as .env)
+# Database URL (Supabase PostgreSQL)
+# IMPORTANT: URL-encode special characters in password (* → %2A, ! → %21, @ → %40)
 DATABASE_URL="postgresql://user:password@host:6543/postgres?pgbouncer=true"
 ```
+
+> [!TIP]
+> **Production (Vercel):** Add the same environment variables in your Vercel Dashboard → Project Settings → Environment Variables. No `.env` file needed in production.
 
 ---
 

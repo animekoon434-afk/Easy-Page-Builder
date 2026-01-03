@@ -73,7 +73,7 @@ export default function Features() {
                     viewport={{ once: true }}
                     transition={{ type: "spring", stiffness: 320, damping: 70, mass: 1 }}
                 >
-                    WebBuilder helps you build faster by transforming your design vision into fully functional, production-ready websites.
+                    Easy Page Builder helps you build faster by transforming your design vision into fully functional, production-ready websites.
                 </motion.p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 mt-8 gap-10">
@@ -111,7 +111,7 @@ export default function Features() {
                             Better design with highest performance
                         </h3>
                         <p className="text-slate-300 mt-2">
-                            WebBuilder empowers you to build beautifully and scale effortlessly.
+                            Easy Page Builder empowers you to build beautifully and scale effortlessly.
                         </p>
                         <a href="#pricing" className="group flex items-center gap-2 mt-4 text-pink-600 hover:text-pink-700 transition">
                             Learn more about plans

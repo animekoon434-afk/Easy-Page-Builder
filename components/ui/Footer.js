@@ -4,7 +4,7 @@ export default function Footer() {
             <div className="container px-4 md:px-6 mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
                     <div className="col-span-2 md:col-span-1">
-                        <h3 className="text-xl font-bold text-white mb-4">WebBuilder</h3>
+                        <h3 className="text-xl font-bold text-white mb-4">Easy Page Builder</h3>
                         <p className="text-gray-400 text-sm mb-4">
                             The modern way to build, deploy, and scale your web applications.
                         </p>
@@ -43,7 +43,7 @@ export default function Footer() {
 
                 <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-gray-500 text-sm">
-                        © 2026 WebBuilder Inc. All rights reserved.
+                        © 2026 Easy Page Builder Inc. All rights reserved.
                     </p>
                     <div className="flex gap-6">
                         <a href="#" className="text-gray-500 hover:text-white transition-colors">

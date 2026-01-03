@@ -2,8 +2,12 @@ import { Navbar } from "@/components/ui";
 import { StackSelector } from "@/components/stack";
 
 export const metadata = {
-    title: "Create Project - WebBuilder",
+    title: "Create Project - Easy Page Builder",
     description: "Select your tech stack and create a new project",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 export default function CreatePage() {

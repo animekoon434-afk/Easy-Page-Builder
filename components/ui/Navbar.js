@@ -29,7 +29,7 @@ export default function Navbar() {
                         <Sparkles className="w-5 h-5 text-white" />
                     </div>
                     <span className="text-xl font-bold text-white">
-                        WebBuilder
+                        Easy Page Builder
                     </span>
                 </Link>
 
